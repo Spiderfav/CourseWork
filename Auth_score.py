@@ -3,12 +3,12 @@ import getpass
 admin_usr = 0
 
 def input_usr():
-        #Ask the user their username
-        name = input("Enter username: ")
+        #Ask the user their useruser
+        user = input("Enter useruser: ")
         try:
-                # Look for their file name
-                os.path.isfile(name+".txt") 
-                load_usr( name )
+                # Look for their file user
+                os.path.isfile(user+".txt")
+                load_usr( user )
         except IOError:
                 #If not found, say user not found
                 print("User not found!")
@@ -18,12 +18,12 @@ def input_usr():
 
 
 
-def load_usr( name ):
+def load_usr( user ):
 
         #Read the file and check if admin or not
         global admin_usr
         #Set the admin usr global
-        in_file = open(name+".txt")
+        in_file = open(user+".txt")
         read_text = in_file.read()
         #print (read_text)
         in_file.close()
@@ -44,7 +44,7 @@ def load_usr( name ):
                                 print ("Password Incorrect.")
                                 input_usr()
                                 break
-                
+
                         elif '2' in line:
                             #If 2 in line then admin set 2
                             print ("You are my secondary user!")
@@ -66,17 +66,15 @@ def create_usr():
     if answer.upper() == "NO":
             #Set them to guest user
             print ("You are now a guest user.")
-            print ("To create an account after, follow steps restart and types in name.")
+            print ("To create an account after, follow steps restart and types in user.")
 
     #If answer is yes:
     elif answer.upper() == "YES":
-            #Ask their name
-            name = input("Type your name in here please: ")
+            #Ask their user
+            user = input("Type your user in here please: ")
             #Create file
-            out_file = open(name+".txt", "wt")
+            out_file = open(user+".txt", "wt")
             out_file.write("2")
             out_file.close()
 
-            print ("Hello "+ name +".I have set you as my secondary user.")
-
-
+            print ("Hello "+ user +".I have set you as my secondary user.")
