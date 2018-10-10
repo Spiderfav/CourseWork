@@ -1,3 +1,7 @@
+#Convert the both choices to functions so they can be called instead of being repeated!
+
+
+
 import random
 
 #Red beats black, yellow beats Red and black beats Yellow
