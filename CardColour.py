@@ -22,8 +22,9 @@ numb_choice = random.randint(0,9)
 choice2 = card_numbers[numb_choice]
 #pop Number of Colour
 
-used_card_and_numbers.extend(p1)
 p1 = (choice1,choice2)    
+used_card_and_numbers.extend(p1)
+
 
 print(p1)
 
@@ -33,8 +34,10 @@ choice1 = card_colours[card_choice]
 numb_choice = random.randint(0,9)
 choice2 = card_numbers[numb_choice]
 
-used_card_and_numbers.extend(p2)
+
 p2 = (choice1,choice2)
+used_card_and_numbers.extend(p2)
+
 
 print(p2)
 
@@ -63,4 +66,4 @@ elif p1[1] == p2[1]:
 else:
     print("P2 wins!")
 
-print(used_card_and_numbers[])
+print(len(used_card_and_numbers))
