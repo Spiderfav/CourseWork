@@ -9,7 +9,7 @@ import random
 
 card_colours = ["RED","BLACK","YELLOW"]
 card_numbers = [1,2,3,4,5,6,7,8,9,10]
-# Create a list with colour + number combo so cannot be used again
+used_card_and_numbers = []
 
 print("Let's get started!")
 
@@ -22,10 +22,10 @@ numb_choice = random.randint(0,9)
 choice2 = card_numbers[numb_choice]
 #pop Number of Colour
 
+used_card_and_numbers.extend(p1)
 p1 = (choice1,choice2)    
 
 print(p1)
-
 
 card_choice = random.randint(0,2)
 choice1 = card_colours[card_choice]
@@ -33,6 +33,7 @@ choice1 = card_colours[card_choice]
 numb_choice = random.randint(0,9)
 choice2 = card_numbers[numb_choice]
 
+used_card_and_numbers.extend(p2)
 p2 = (choice1,choice2)
 
 print(p2)
@@ -61,3 +62,5 @@ elif p1[1] == p2[1]:
     
 else:
     print("P2 wins!")
+
+print(used_card_and_numbers[])
