@@ -17,17 +17,19 @@ def remove():
     test3 = test2.replace("U","-")
     print(test3)
 
+def choose_song():
+    Songs = open("Songs.txt", "r")
+    Artists = open("Artists.txt", "r")
+    Songs = Songs.read()
+    items = Songs.split(',')
+    i = random.randint(0,2)
+    remove()
+    Artists = Artists.read()
+    items = Artists.split(',')
+    remove()
 
-Songs = open("Songs.txt", "r")
-Artists = open("Artists.txt", "r")
-Songs = Songs.read()
-items = Songs.split(',')
-i = random.randint(0,2)
-remove()
-Artists = Artists.read()
-items = Artists.split(',')
-remove()
-
+print("Let's start! Here it goes:")
+choose_song()
 
 
 
