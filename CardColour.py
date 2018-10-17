@@ -46,18 +46,30 @@ elif p1[1] == p2[1]:
     if p1[0] == "RED":
         if p2[0] == "BLACK":
             print("P1 Won!")
+            
+        elif p2[0] == "RED":
+            print("Draw!")
+            
         else:
             print("P2 Won!")
 
     elif p1[0] == "BLACK":
         if p2[0] == "YELLOW":
             print("P1 Won!")
+            
+        elif p2[0] == "BLACK":
+            print("Draw!")
+            
         else:
             print("P2 Won!")
 
     elif p1[0] == "YELLOW":
         if p2[0] == "RED":
             print("P1 Won!")
+            
+        elif p2[0] == "YELLOW":
+            print("Draw!")
+            
         else:
             print("P2 Won!")
     
