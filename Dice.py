@@ -1,27 +1,72 @@
 import random
 import time
+import Auth_score
+from Auth_score import admin_usr
+
+#Setting 4 variables as zero for later
+p1_wins = 0
+
+p2_wins = 0
+
+score1total = 0
+
+score2total = 0
+
+def winners():
+    #Opens the file where score was just saved
+    ClassA = open("Winners.txt", "r")
+    ClassA = ClassA.read()
+    # Splits into a dictionary using the character to differenciate
+    items = ClassA.split(':')
+    #
+    lenght = len(items)
+    #
+    length = lenght-1
+    # Creates empty dictionary to store the averages later
+    listg = {}
+
+    for i in range (0,length,2):
+    # Store the name from the file into the variable
+     name = items[i]
+     # Score is one position greater than the name so take it as an integer
+     score = int(items[i+1])
+     # If the position is not in the list, add it
+     if name not in ave_list:
+          ave_list[name] = []
+     ave_list[name].append(score)
+     # If there is more than three scores for one name, destroy/pop the first
+     if len(ave_list[name]) >3:
+          ave_list[name].pop(0)
+     print(ave_list)
 
 #This is used at a later date for undecided result
-def undicided ( p1_wins, p2_wins):
+def undicided ( score1total, score2total):
     #Keeps looping while Player 1 wins is equal to player's 2 wins
-    while p1_wins == p2_wins:
+    while score1total == score2total:
       roll0 = random.randint(1,6)
       roll1 = random.randint(1,6)
       if roll0 > roll1:
          print("P1 wins!")
-         p1_wins = p1_wins +1
+         score1total = score1total +1
+         out_file = open("Winners","a+")
+         out_file.write( name1 + ":" + score1total )
+         winners()
 
       elif roll0 == roll1:
-         undicided( p1_wins, p2_wins)
+         undicided( score1total, score2total)
 
       else:
          print("P2 Wins!")
-         p2_wins = p2_wins +1
+         score2total = score2total +1
+         out_file = open("Winners","a+")
+         out_file.write( name1 + ":" + score2total )
+         winners()
 
-#Setting both variables as zero for later
-p1_wins = 0
-
-p2_wins = 0
+#Importing from file containing user permissions
+#To be admin, user's file needs to contain "1" inside
+while admin_usr != 1:
+    Auth_score.input_usr()
+    from Auth_score import admin_usr
 
 #Repeat for 5 times for five games
 for x in range(1,5):
@@ -73,6 +118,11 @@ for x in range(1,5):
       p2_total2 = 0
 
 
+   score1total = p1_total2 + score1total
+
+   score2total = p2_total2 + score2total
+
+   
    #This is to determine which Player wins
    if p1_total2 > p2_total2:
       print("P1 wins!")
@@ -90,13 +140,23 @@ for x in range(1,5):
 print("Player 1 has won",p1_wins,"game/s!")
 print("Player 2 has won",p2_wins,"game/s!")
 
-if p1_wins > p2_wins:
-   print("P1 wins the game!")
+from Auth_score import name
+name1 = name
 
-elif p1_wins == p2_wins:
+if score1total > score2total:
+   print("P1 wins the game!")
+   out_file = open("Winners","a+")
+   out_file.write( name1 + ":" + score1total )
+
+elif score1total == score2total:
    print("Roll one dice to decide!")
    undicided( p1_wins, p2_wins)
   
 
 else:
    print("P2 wins the gane!")
+   out_file = open("Winners","a+")
+   out_file.write( name1 + ":" + score2total )
+
+
+winners()
