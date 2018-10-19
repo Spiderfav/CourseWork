@@ -16,29 +16,12 @@ def winners():
     #Opens the file where score was just saved
     ClassA = open("Winners.txt", "r")
     ClassA = ClassA.read()
+    print(ClassA)
     # Splits into a dictionary using the character to differenciate
     items = ClassA.split(':')
-    #
-    lenght = len(items)
-    #
-    length = lenght-1
-    # Creates empty dictionary to store the averages later
-    listg = {}
+    print(items)
 
-    for i in range (0,length,2):
-    # Store the name from the file into the variable
-     name = items[i]
-     # Score is one position greater than the name so take it as an integer
-     score = int(items[i+1])
-     # If the position is not in the list, add it
-     if name not in ave_list:
-          ave_list[name] = []
-     ave_list[name].append(score)
-     # If there is more than three scores for one name, destroy/pop the first
-     if len(ave_list[name]) >3:
-          ave_list[name].pop(0)
-     print(ave_list)
-
+    
 #This is used at a later date for undecided result
 def undicided ( score1total, score2total):
     #Keeps looping while Player 1 wins is equal to player's 2 wins
@@ -49,7 +32,7 @@ def undicided ( score1total, score2total):
          print("P1 wins!")
          score1total = score1total +1
          out_file = open("Winners","a+")
-         out_file.write( name1 + ":" + score1total )
+         out_file.write( "Player1" + ":" + int(score1total) + ":" )
          winners()
 
       elif roll0 == roll1:
@@ -59,7 +42,7 @@ def undicided ( score1total, score2total):
          print("P2 Wins!")
          score2total = score2total +1
          out_file = open("Winners","a+")
-         out_file.write( name1 + ":" + score2total )
+         out_file.write( "Player2" + ":" + int(score2total) + ":" )
          winners()
 
 #Importing from file containing user permissions
@@ -106,7 +89,7 @@ for x in range(1,5):
       print("It's odd! Subtract 5 points!")
       p2_total2 = p2_total - 5
 
-      
+
    print("Player 1's total is:",p1_total2)
    print("Player 2's total is:",p2_total2)
 
@@ -122,7 +105,7 @@ for x in range(1,5):
 
    score2total = p2_total2 + score2total
 
-   
+
    #This is to determine which Player wins
    if p1_total2 > p2_total2:
       print("P1 wins!")
@@ -133,30 +116,28 @@ for x in range(1,5):
 
    else:
       print("P2 wins!")
-      p2_wins = p2_wins + 1 
+      p2_wins = p2_wins + 1
 
    print("")
-   
+
 print("Player 1 has won",p1_wins,"game/s!")
 print("Player 2 has won",p2_wins,"game/s!")
 
-from Auth_score import name
-name1 = name
 
 if score1total > score2total:
    print("P1 wins the game!")
    out_file = open("Winners","a+")
-   out_file.write( name1 + ":" + score1total )
+   out_file.write( "Player1" + ":" + str(score1total) + ":" )
 
 elif score1total == score2total:
    print("Roll one dice to decide!")
    undicided( p1_wins, p2_wins)
-  
+
 
 else:
    print("P2 wins the gane!")
    out_file = open("Winners","a+")
-   out_file.write( name1 + ":" + score2total )
+   out_file.write( "Player2" + ":" + str(score2total) + ":" )
 
 
 winners()
