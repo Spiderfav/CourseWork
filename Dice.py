@@ -31,6 +31,10 @@ def undicided ( score1total, score2total):
     while score1total == score2total:
       roll0 = random.randint(1,6)
       roll1 = random.randint(1,6)
+      print("Player 1 rolls:",roll0)
+      time.sleep(2)
+      print("Player 2 rolls:",roll1)
+      print("")
       if roll0 > roll1:
          print("P1 wins!")
          score1total = score1total +1
