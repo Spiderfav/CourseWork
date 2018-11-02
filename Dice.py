@@ -1,5 +1,7 @@
+#Import modules random and time from the python library
 import random
 import time
+#Import the file created for checking user permissions
 import Auth_score
 from Auth_score import admin_usr
 
@@ -12,6 +14,7 @@ score1total = 0
 
 score2total = 0
 
+#Used at the end to save the scores and names of the players who won
 def winners():
     #Opens the file where score was just saved
     ClassA = open("Winners.txt", "r")
@@ -22,7 +25,7 @@ def winners():
     print(items)
 
     
-#This is used at a later date for undecided result
+#This is used if at the end, the scores of players are the same
 def undicided ( score1total, score2total):
     #Keeps looping while Player 1 wins is equal to player's 2 wins
     while score1total == score2total:
