@@ -38,8 +38,9 @@ def undicided ( score1total, score2total):
       if roll0 > roll1:
          print("P1 wins!")
          score1total = score1total +1
-         out_file = open("Winners","a+")
+         out_file = open("Winners.txt","a+")
          out_file.write( "Player1" + ":" + int(score1total) + ":" )
+         out_file.close()
          winners()
 
       elif roll0 == roll1:
@@ -48,8 +49,9 @@ def undicided ( score1total, score2total):
       else:
          print("P2 Wins!")
          score2total = score2total +1
-         out_file = open("Winners","a+")
+         out_file = open("Winners.txt","a+")
          out_file.write( "Player2" + ":" + int(score2total) + ":" )
+         out_file.close()
          winners()
 
 #Importing from file containing user permissions
@@ -133,8 +135,10 @@ print("Player 2 has won",p2_wins,"game/s!")
 
 if score1total > score2total:
    print("P1 wins the game!")
-   out_file = open("Winners","a+")
+   out_file = open("Winners.txt","a+")
    out_file.write( "Player1" + ":" + str(score1total) + ":" )
+   out_file.close()
+
 
 elif score1total == score2total:
    print("Roll one dice to decide!")
@@ -143,8 +147,9 @@ elif score1total == score2total:
 
 else:
    print("P2 wins the gane!")
-   out_file = open("Winners","a+")
+   out_file = open("Winners.txt","a+")
    out_file.write( "Player2" + ":" + str(score2total) + ":" )
+   out_file.close()
 
 
 winners()
