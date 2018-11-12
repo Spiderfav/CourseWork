@@ -18,11 +18,13 @@ score2total = 0
 def winners():
     #Opens the file where score was just saved
     ClassA = open("Winners.txt", "r")
-    ClassA = ClassA.read()
-    print(ClassA)
+    ClassB = ClassA.read()
+    print(ClassB)
     # Splits into a dictionary using the character to differenciate
-    items = ClassA.split(':')
+    items = ClassB.split(':')
     print(items)
+    ClassA.close()
+    
 
     
 #This is used if at the end, the scores of players are the same
